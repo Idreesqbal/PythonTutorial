@@ -17,5 +17,6 @@ for num in num1:  # This method is called loop inside loop which basically used 
         print(num, letter)
 for i in range(10):
     print(i)  # used to the repeated tasks over a limited time .
+    #nothing
 
 
