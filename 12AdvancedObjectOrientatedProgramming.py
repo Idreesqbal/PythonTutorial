@@ -1,4 +1,7 @@
 # First topic of the day: Classes and variable in OOP
+from win32ctypes.core.cffi import _time
+
+
 class employee():
     pass
 
@@ -26,6 +29,10 @@ class Employee2():
 # class variable is created when you want it to be applied for every instances of that class
 # instance variable is created when you would mutate it in the future.
 
+class Employee3(object):
+    pass
+
+
 class Emplyoee3():
     num_of_emps = 0
     raise_amount = 1.04
@@ -44,13 +51,14 @@ class Emplyoee3():
         emp1.raise_amount = 2.04  # this will apply the raise amount change just for the emp_1 .
         # if there exist another employees this change won't be applied to them
 
-# 3rd Topic of today: Class method and staticMethod
+    # 3rd Topic of today: Class method and staticMethod
     # Class methods are used to minupulate the class data it self.
     # e.g.
     @classmethod
     def from_string(cls, emp_str):
         first, last, age = emp_str.split('-')
         return cls(first, last, age)
+
     # ^ what is this code doing you might ask? imagine that you have a list of employees information
     # and you wanted to take them all in, but they are all formatted as CSV file ...
     # if u do them all manually then it costs a lots of time which we don't want.
@@ -63,24 +71,21 @@ class Emplyoee3():
     def from_today(cls):
         t = _time.time()
         return cls.fromtimestamp(t)
-    @staticmethod # Static method is used as normal function that hasn't anything to do with the instance or the class
 
+    @staticmethod  # Static method is used as normal function that hasn't anything to do with the instance or the class
     def is_workday(day):
         if day.weekday() == 5 or day.weekday() == 6:
             return False
         return True
-    #Example:
+
+    # Example:
     my_date = datetime.date(2016, 7, 11)
     print(Employee3.is_workday(my_date))
 
-    def __add_(self, other): # this will able this class to be able to add two payment of employees
+    def __add_(self, other):  # this will able this class to be able to add two payment of employees
         return self.pay + other.pay
 
-
-# Property decorator : it allows us to define a method but we can access it like attribute.
+    # Property decorator : it allows us to define a method but we can access it like attribute.
     @property
     def email(self):
         return '{}.{}@email.com'.format(self.first, self.last)
-
-
-
